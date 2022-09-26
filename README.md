@@ -81,3 +81,7 @@ Add this to `package.json`:
 - graphql: For graphql schema definitions.
 - You can run `npm run gen` to update your `schema.graphql` and `nexus-typegen.ts` file when there are any changes in your Nexus code.
 - You can use `npm run dev` to start the web server and watch for any changes.
+
+
+# Notes
+1. Predefined scalar types in Graphql is `Int`, `Float`, `String`, `Boolean` and `ID`.
