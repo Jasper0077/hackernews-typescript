@@ -30,9 +30,10 @@ export interface NexusGenScalars {
 export interface NexusGenObjects {
   Link: { // root type
     description: string; // String!
-    id?: string | null; // ID
+    id: number; // Int!
     url: string; // String!
   }
+  Mutation: {};
   Query: {};
 }
 
@@ -50,32 +51,54 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 export interface NexusGenFieldTypes {
   Link: { // field return type
     description: string; // String!
-    id: string | null; // ID
+    id: number; // Int!
     url: string; // String!
   }
+  Mutation: { // field return type
+    deleteLink: NexusGenRootTypes['Link'] | null; // Link
+    link: NexusGenRootTypes['Link'] | null; // Link
+    post: NexusGenRootTypes['Link']; // Link!
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    feed: NexusGenRootTypes['Link'][]; // [Link!]!
   }
   BaseType: { // field return type
-    id: string | null; // ID
+    id: number; // Int!
   }
 }
 
 export interface NexusGenFieldTypeNames {
   Link: { // field return type name
     description: 'String'
-    id: 'ID'
+    id: 'Int'
     url: 'String'
   }
+  Mutation: { // field return type name
+    deleteLink: 'Link'
+    link: 'Link'
+    post: 'Link'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    feed: 'Link'
   }
   BaseType: { // field return type name
-    id: 'ID'
+    id: 'Int'
   }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    deleteLink: { // args
+      id: number; // Int!
+    }
+    link: { // args
+      id: number; // Int!
+    }
+    post: { // args
+      description: string; // String!
+      url: string; // String!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {

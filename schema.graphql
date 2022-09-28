@@ -4,17 +4,23 @@
 
 interface BaseType {
   """Unique identifier for the resource"""
-  id: ID
+  id: Int!
 }
 
 type Link implements BaseType {
   description: String!
 
   """Unique identifier for the resource"""
-  id: ID
+  id: Int!
   url: String!
 }
 
+type Mutation {
+  deleteLink(id: Int!): Link
+  link(id: Int!): Link
+  post(description: String!, url: String!): Link!
+}
+
 type Query {
-  ok: Boolean!
+  feed: [Link!]!
 }
