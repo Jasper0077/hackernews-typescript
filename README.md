@@ -85,3 +85,16 @@ Add this to `package.json`:
 
 # Notes
 1. Predefined scalar types in Graphql is `Int`, `Float`, `String`, `Boolean` and `ID`.
+
+# My Editor Settings
+1. I love to follow a standard style guide. Using `eslint-config-airbnb` in this project. I followed the gist shared by this awesome fella. For more [detail](https://gist.github.com/bradtraversy/aab26d1e8983d9f8d79be1a9ca894ab4
+)
+2. I downloaded the [Prisma Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma
+). And added these into my vscode `settings.json`, to format `.prisma` files on save.
+```json
+  "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma",
+      "editor.formatOnSave": true
+  },
+```
+3. I love to use `yarn` as my packageManager. However, you can change it whatever you like, go to `package.json`, can change the `packageManager` based on your preference.
