@@ -1,5 +1,6 @@
 import { extendType, intArg, nonNull, objectType, stringArg } from "nexus";
 import { NexusGenObjects } from "../../nexus-typegen";
+import { Context } from "../context";
 import { BaseType } from "./BaseType";
 
 export const Link = objectType({
@@ -29,8 +30,8 @@ export const LinkQuery = extendType({
   definition(t) {
     t.nonNull.list.nonNull.field("feed", {
       type: "Link",
-      resolve(parent, args, context, info) {
-        return links;
+      resolve(parent, args, context: Context) {
+        return context.prisma.link.findMany();
       },
     });
   },
@@ -45,16 +46,14 @@ export const LinkMutation = extendType({
         description: nonNull(stringArg()),
         url: nonNull(stringArg()),
       },
-      resolve(parent, args, context) {
-        const { description, url } = args;
-        let idCount = links.length + 1;
-        const link = {
-          id: idCount,
-          description,
-          url,
-        };
-        links.push(link);
-        return link;
+      resolve(parent, args, context: Context) {
+        const newLink = context.prisma.link.create({
+          data: {
+            description: args.description,
+            url: args.url,
+          }
+        });
+        return newLink;
       },
     });
   },

@@ -13,4 +13,8 @@ export const schema = makeSchema({
       resolveType: false,
     },
   },
+  contextType: {
+    module: join(process.cwd(), "./src/context.ts"),
+    export: "Context",
+  }
 });
