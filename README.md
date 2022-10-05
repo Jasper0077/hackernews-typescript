@@ -1,6 +1,6 @@
 # Typescript - Apollo Server Tutorial
 
-A note to record my typescript + Apollo tutorial. From [HOW TO GRAPHQL](https://www.howtographql.com/typescript-apollo/1-getting-started/) :fire:.  
+A note to record my typescript + Apollo tutorial. From [HOW TO GRAPHQL](https://www.howtographql.com/typescript-apollo/1-getting-started/) :fire:.
 
 ## Setup
 
@@ -17,11 +17,13 @@ yarn add apollo-server@3.1.1 graphql@15.5.1 nexus@1.1.0
 ```
 
 after installing the dependecies, setup your tsconfig, by running or just copy paste.
+
 ```
 npx tsc --init
 ```
 
 I added this into my npm script in `package.json`
+
 ```json
 // ...
 "scripts": {
@@ -39,6 +41,7 @@ git init
 ```
 
 Add node_modules to `.gitignore`
+
 ```
 node_modules
 ```
@@ -55,20 +58,22 @@ import { makeSchema } from "nexus";
 import { join } from "path";
 
 export const schema = makeSchema({
-    types: [],
-    outputs: {
-      typegen: join(__dirname, '..', 'nexus-typegen.ts'),
-      schema: join(__dirname, '..', 'schema.graphql'),
-    },
-})
+  types: [],
+  outputs: {
+    typegen: join(__dirname, "..", "nexus-typegen.ts"),
+    schema: join(__dirname, "..", "schema.graphql"),
+  },
+});
 ```
 
 In your terminal run this to generate the `typegen` and `.graphql`,
+
 ```
 npx ts-node --transpile-only src/schema
 ```
 
 Add this to `package.json`:
+
 ```json
   "scripts": {
     // ...
@@ -82,19 +87,20 @@ Add this to `package.json`:
 - You can run `npm run gen` to update your `schema.graphql` and `nexus-typegen.ts` file when there are any changes in your Nexus code.
 - You can use `npm run dev` to start the web server and watch for any changes.
 
-
 # Notes
+
 1. Predefined scalar types in Graphql is `Int`, `Float`, `String`, `Boolean` and `ID`.
 
 # My Editor Settings
-1. I love to follow a standard style guide. Using `eslint-config-airbnb` in this project. I followed the gist shared by this awesome fella. For more [detail](https://gist.github.com/bradtraversy/aab26d1e8983d9f8d79be1a9ca894ab4
-)
-2. I downloaded the [Prisma Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma
-). And added these into my vscode `settings.json`, to format `.prisma` files on save.
+
+1. I love to follow a standard style guide. Using `eslint-config-airbnb` in this project. I followed the gist shared by this awesome fella. For more [detail](https://gist.github.com/bradtraversy/aab26d1e8983d9f8d79be1a9ca894ab4)
+2. I downloaded the [Prisma Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma). And added these into my vscode `settings.json`, to format `.prisma` files on save.
+
 ```json
   "[prisma]": {
       "editor.defaultFormatter": "Prisma.prisma",
       "editor.formatOnSave": true
   },
 ```
+
 3. I love to use `yarn` as my packageManager. However, you can change it whatever you like, go to `package.json`, can change the `packageManager` based on your preference.

@@ -3,7 +3,7 @@ import { schema } from "./schema";
 import { PORT } from "./constants";
 
 const server = new ApolloServer({
-  schema
+  schema,
 });
 
 server.listen({ port: PORT }).then(({ url }) => {
